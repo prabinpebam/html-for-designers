@@ -97,7 +97,7 @@ The center pane shows a live rendering of your HTML and CSS, with highlighting f
 
 ## Deployment
 
-This project is set up to deploy to GitHub Pages. Visit the live demo at [https://PrabinPebam.github.io/code-for-designers](https://PrabinPebam.github.io/code-for-designers)
+This project is set up to deploy to GitHub Pages. Visit the live demo at [https://PrabinPebam.github.io/html-for-designers](https://PrabinPebam.github.io/html-for-designers)
 
 To deploy your own version:
 
