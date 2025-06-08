@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /*— Colors —*/
+  --color-white:        #FFFFFF;
+  --color-black:        #000000;
+  --color-gray-100:     #F1F5F9;
+  --color-gray-200:     #E2E8F0;
+  --color-gray-300:     #CBD5E1;
+  --color-gray-400:     #94A3B8;
+  --color-gray-500:     #6B7280;
+  --color-gray-600:     #4B5563;
+  --color-gray-700:     #374151;
+  --color-gray-800:     #1F2937;
+  --color-gray-900:     #0F172A;
+  --color-blue-50:      #EFF6FF;
+  --color-blue-100:     #DBEAFE;
+  --color-blue-200:     #BFDBFE;
+  --color-blue-300:     #93C5FD;
+  --color-blue-400:     #60A5FA;
+  --color-blue-500:     #3B82F6;
+  --color-blue-600:     #2563EB;
+  --color-red-500:      #EF4444;
+  
+  /* RGB versions for rgba usage */
+  --color-white-rgb:    255,255,255;
+  --color-black-rgb:    0,0,0;
+  --color-gray-100-rgb: 241,245,249;
+  --color-gray-200-rgb: 226,232,240;
+  --color-gray-500-rgb: 107,114,128;
+  --color-gray-800-rgb: 31,41,55;
+  --color-gray-900-rgb: 15,23,42;
+  --color-blue-500-rgb: 59,130,246;
+
+  /*— Spacing Units (4px base) —*/
+  --space-1: 0.25rem;  /* 4px  */
+  --space-2: 0.5rem;   /* 8px  */
+  --space-3: 1rem;     /* 16px */
+  --space-4: 1.5rem;   /* 24px */
+  --space-5: 2rem;     /* 32px */
+  --space-6: 2.5rem;   /* 40px */
+  --space-7: 3rem;     /* 48px */
+
+  /*— Typography —*/
+  --font-size-xs: 0.75rem;  /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem;   /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem;  /* 20px */
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+  --line-height-loose: 1.75;
+
+  /*— Radii & Shadows —*/
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-light: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-medium: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-dark: 0 10px 15px rgba(0,0,0,0.2);
+
+  /*— Semantic Defaults —*/
+  --bg-surface:      var(--color-white);
+  --bg-muted:        var(--color-gray-100);
+  --bg-hover:        var(--color-gray-200);
+  --bg-active:       var(--color-blue-50);
+  --text-primary:    var(--color-gray-900);
+  --text-secondary:  var(--color-gray-500);
+  --text-placeholder: var(--color-gray-400);
+  --border-default:  var(--color-gray-200);
+  --border-hover:    var(--color-gray-300);
+  --border-focus:    var(--color-blue-300);
+  --accent:          var(--color-blue-500);
+  --accent-hover:    var(--color-blue-600);
+  --error:           var(--color-red-500);
+  
+  --gutter-mobile:   var(--space-2);
+  --gutter-tablet:   var(--space-3);
+  --gutter-desktop:  var(--space-4);
+  
+  /* Layout */
+  --header-height:   48px;
+  --nav-width:       240px;
+}
+
+:root[data-theme="dark"] {
+  --bg-surface:      var(--color-gray-900);
+  --bg-muted:        var(--color-gray-800);
+  --bg-hover:        var(--color-gray-700);
+  --bg-active:       rgba(var(--color-blue-500-rgb), 0.2);
+  --text-primary:    var(--color-gray-100);
+  --text-secondary:  var(--color-gray-400);
+  --text-placeholder: var(--color-gray-500);
+  --border-default:  var(--color-gray-700);
+  --border-hover:    var(--color-gray-600);
+  --border-focus:    var(--color-blue-400);
+  --shadow-light:    0 1px 3px rgba(0,0,0,0.3);
+}
+
+@layer base {
+  html {
+    font-size: clamp(0.875rem, 1rem + 0.2vw, 1.125rem);
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    line-height: var(--line-height-tight);
+  }
+  
+  h1 { font-size: var(--font-size-xl); }
+  h2 { font-size: var(--font-size-lg); }
+  
+  p { margin-bottom: var(--space-3); }
+}
+
+@layer components {
+  /* Layout Components */
+  .container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+  @media (max-width: 768px) {
+    .container {
+      padding-left: var(--space-2);
+      padding-right: var(--space-2);
+    }
+  }
+
+  /* Figma-style Components */
+  .figma-pane {
+    background: var(--bg-surface);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-default);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .figma-header {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-default);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    padding: var(--space-2) var(--space-3);
+    letter-spacing: 0.01em;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+  }
+
+  .figma-toolbar {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-default);
+    padding: 0 var(--space-2);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .figma-scroll {
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-default) transparent;
+  }
+  
+  .figma-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: transparent;
+  }
+  
+  .figma-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-default);
+    border-radius: 4px;
+    border: 2px solid var(--bg-surface);
+  }
+  
+  .figma-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+  }
+
+  .figma-btn {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    transition: all 0.15s ease;
+    cursor: pointer;
+    height: 28px;
+  }
+  
+  .figma-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+  }
+  
+  .figma-btn.active {
+    background: var(--bg-active);
+    border-color: var(--border-focus);
+  }
+  
+  .figma-btn-icon {
+    padding: var(--space-1);
+  }
+
+  .figma-divider {
+    height: 1px;
+    background: var(--border-default);
+    margin: var(--space-2) 0;
+  }
+  
+  .figma-menu {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-medium);
+    padding: var(--space-1);
+    min-width: 180px;
+    z-index: 100;
+  }
+  
+  .figma-menu-item {
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+  
+  .figma-menu-item:hover {
+    background: var(--bg-hover);
+  }
+  
+  .figma-menu-item.active {
+    background: var(--bg-active);
+  }
+}
+
+@layer utilities {
+  /* Flex and Grid Utilities */
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-3);
+    align-items: center;
+  }
+  
+  /* Gap utilities */
+  .gx-1 { column-gap: var(--space-1); }
+  .gx-2 { column-gap: var(--space-2); }
+  .gx-3 { column-gap: var(--space-3); }
+  .gx-4 { column-gap: var(--space-4); }
+  .gy-1 { row-gap: var(--space-1); }
+  .gy-2 { row-gap: var(--space-2); }
+  .gy-3 { row-gap: var(--space-3); }
+  .gy-4 { row-gap: var(--space-4); }
+}
