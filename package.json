@@ -2,13 +2,13 @@
   "name": "html-for-designers",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://PrabinPebam.github.io/code-for-designers",  "scripts": {
+  "homepage": "https://PrabinPebam.github.io/code-for-designers",
+  "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d docs",
-    "deploy:docs": "npm run build && git add docs && git commit -m 'Update docs' && git push"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",

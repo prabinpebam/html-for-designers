@@ -73,6 +73,10 @@ Desktop.ini
 # Output of 'npm pack'
 *.tgz
 
+# Vite temp files
+.vite
+*.local
+
 # Yarn v2
 .yarn/cache
 .yarn/unplugged
