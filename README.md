@@ -95,6 +95,17 @@ A Figma-inspired HTML/CSS visualizer with a three-pane layout that helps designe
 
 The center pane shows a live rendering of your HTML and CSS, with highlighting for selected elements and hover states.
 
+## Deployment
+
+This project is set up to deploy to GitHub Pages. Visit the live demo at [https://PrabinPebam.github.io/code-for-designers](https://PrabinPebam.github.io/code-for-designers)
+
+To deploy your own version:
+
+1. Update the `homepage` field in `package.json` with your GitHub username
+2. Make sure the repository name in `vite.config.js` matches your repository name
+3. Run `npm run deploy` to build and publish to GitHub Pages
+4. In your GitHub repository settings, ensure GitHub Pages is enabled and pointing to the `gh-pages` branch
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
