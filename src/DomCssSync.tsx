@@ -7,55 +7,15 @@ export default function DomCssSync() {
   const treeData = useAppStore(s => s.treeData);
   const cssRules = useAppStore(s => s.cssRules);
 
-  // Update style element with current CSS rules
+  // We no longer need to inject CSS directly into the document
+  // as it will be handled by the iframe in LiveRender
+  // This component now only needs to observe DOM changes if needed
+  // For iframe approach, we'd need to use postMessage or other methods
+  // to communicate between the main app and the iframe content
+  // This is a placeholder for that functionality
   useEffect(() => {
-    // Create or update style tag for our app
-    let styleTag = document.getElementById('figma-css-visualizer-styles');
-    
-    if (!styleTag) {
-      styleTag = document.createElement('style');
-      styleTag.id = 'figma-css-visualizer-styles';
-      document.head.appendChild(styleTag);
-    }
-    
-    // Generate CSS text from rules
-    const cssText = cssRules.map(rule => {
-      const properties = Object.entries(rule.properties)
-        .map(([k, v]) => `  ${k}: ${v};`)
-        .join('\n');
-      return `${rule.selector} {\n${properties}\n}`;
-    }).join('\n\n');
-    
-    styleTag.textContent = cssText;
-    
-    return () => {
-      // Clean up on unmount
-      if (styleTag) {
-        styleTag.parentNode?.removeChild(styleTag);
-      }
-    };
-  }, [cssRules]);
-
-  // Create a MutationObserver to watch for DOM changes
-  // In a real app, this would sync changes from the browser DOM back to our model
-  useEffect(() => {
-    const observer = new MutationObserver((mutations) => {
-      // This is a simplified version - in a real app you'd need more complex DOM parsing
-      console.log('DOM mutations detected:', mutations.length);
-    });
-    
-    // Start observing only after we've rendered our tree
-    const container = document.querySelector('.live-render-container');
-    if (container) {
-      observer.observe(container, { 
-        childList: true, 
-        subtree: true, 
-        attributes: true,
-        characterData: true 
-      });
-    }
-    
-    return () => observer.disconnect();
+    // Handle any necessary communication between the main app and the preview iframe
+    // This would be implemented if we need to sync changes from the iframe back to our model
   }, [setTreeData, treeData]);
   
   return null;

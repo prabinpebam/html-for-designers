@@ -2,7 +2,7 @@
   "name": "html-for-designers",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://PrabinPebam.github.io/html-for-designers",
+  "homepage": "https://PrabinPebam.github.io/html-for-designers/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

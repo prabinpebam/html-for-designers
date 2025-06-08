@@ -32,7 +32,7 @@ function NodeLabel({ node }: { node: TreeNode }) {
   );
 }
 
-function TreeNode({ node, depth }: { node: TreeNode; depth: number }) {
+function TreeNodeComponent({ node, depth }: { node: TreeNode; depth: number }) {
   const [collapsed, setCollapsed] = React.useState(false);
   const selectedNodeId = useAppStore(s => s.selectedNodeId);
   const setSelectedNodeId = useAppStore(s => s.setSelectedNodeId);
@@ -65,9 +65,8 @@ function TreeNode({ node, depth }: { node: TreeNode; depth: number }) {
           </button>
         )}
         <NodeLabel node={node} />
-      </div>
-      {!collapsed && node.children.map(child => (
-        <TreeNode key={child.id} node={child} depth={depth + 1} />
+      </div>      {!collapsed && node.children.map(child => (
+        <TreeNodeComponent key={child.id} node={child} depth={depth + 1} />
       ))}
     </div>
   );
@@ -153,11 +152,10 @@ export default function TreeView({ darkMode, setDarkMode, onStartNew }: TreeView
       </div>
       
       {/* Content */}
-      <div className="flex-1 min-h-0 min-w-0 overflow-hidden">
-        {htmlPaneView === 'tree' ? (
+      <div className="flex-1 min-h-0 min-w-0 overflow-hidden">        {htmlPaneView === 'tree' ? (
           <div className="figma-scroll h-full p-2">
             {treeData && treeData.length > 0 ? treeData.map(node => (
-              <TreeNode key={node.id} node={node} depth={0} />
+              <TreeNodeComponent key={node.id} node={node} depth={0} />
             )) : <div className="p-2 text-[var(--text-secondary)]">No HTML loaded</div>}
           </div>
         ) : (
